@@ -15,7 +15,7 @@ Final year project (DIT- Dispensary management system) implemented with filament
 You can clone the project using git clone command:
 
 ```bash
-git clone https://github.com/omakei/dms-filament.git
+git clone https://github.com/omakei/dms.git
 ```
 
 after clone the project you can change directory to project directory and copy `.env` file
