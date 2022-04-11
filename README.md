@@ -65,7 +65,7 @@ php artisan test
 ## Project Requirement 
 - [x] Settings (Visit services, departments, countries, regions, 
             districts, laboratory tests, medicines, icd10 codes, attendants)
-- [ ] Patient Registration
+- [x] Patient Registration
 - [ ] Visit Registration (bills, bill items)
 - [ ] Patient History (Vital signs, complaints, medications,  birth history, family and social,
                         gynaecological and obstetric,system review, diagnoses, investigations)
