@@ -1,0 +1,327 @@
+[
+    {
+        "name": "Arusha",
+        "districts": [
+            "Arusha City",
+            "Arusha District",
+            "Karatu District",
+            "Longido District",
+            "Meru",
+            "Monduli District",
+            "Ngorongoro"
+        ]
+    },
+    {
+        "name": "Dar es Salaam",
+        "districts": [
+            "Ilala",
+            "Kinondoni",
+            "Temeke"
+        ]
+    },
+    {
+        "name": "Dodoma",
+        "districts": [
+            "Bahi District",
+            "Chamwino",
+            "Chemba",
+            "Dodoma Urban District",
+            "Kondoa",
+            "Kongwa",
+            "Mpwapwa"
+        ]
+    },
+    {
+        "name": "Geita",
+        "districts": [
+            "Bukombe District",
+            "Chato District",
+            "Geita",
+            "Mbogwe",
+            "Nyang�hwale"
+        ]
+    },
+    {
+        "name": "Iringa",
+        "districts": [
+            "Iringa Rural District",
+            "Iringa Urban District",
+            "Kilolo District",
+            "Mafinga Town Council",
+            "Mufindi"
+        ]
+    },
+    {
+        "name": "Kagera",
+        "districts": [
+            "Biharamulo District",
+            "Bukoba",
+            "Bukoba Municipal",
+            "Karagwe",
+            "Kyerwa",
+            "Missenyi",
+            "Muleba",
+            "Ngara"
+        ]
+    },
+    {
+        "name": "Katavi",
+        "districts": [
+            "Mlele",
+            "Mpanda",
+            "Mpanda Town"
+        ]
+    },
+    {
+        "name": "Kigoma",
+        "districts": [
+            "Buhigwe",
+            "Kakonko District",
+            "Kasulu",
+            "Kasulu Town",
+            "Kibondo",
+            "Kigoma Rural",
+            "Kigoma Ujiji Municipal",
+            "Uvinza District"
+        ]
+    },
+    {
+        "name": "Kilimanjaro",
+        "districts": [
+            "Hai",
+            "Moshi Rural District",
+            "Moshi Urban District",
+            "Mwanga",
+            "Rombo District",
+            "Same",
+            "Siha"
+        ]
+    },
+    {
+        "name": "Lindi",
+        "districts": [
+            "Kilwa",
+            "Lindi Rural",
+            "Lindi Urban",
+            "Liwale",
+            "Nachingwea",
+            "Ruangwa"
+        ]
+    },
+    {
+        "name": "Manyara",
+        "districts": [
+            "Babati District",
+            "Babati Town",
+            "Hanang District",
+            "Kiteto",
+            "Mbulu",
+            "Simanjiro"
+        ]
+    },
+    {
+        "name": "Mara",
+        "districts": [
+            "Bunda",
+            "Butiama",
+            "Musoma",
+            "Musoma Municipal",
+            "Rorya",
+            "Serengeti",
+            "Tarime"
+        ]
+    },
+    {
+        "name": "Mbeya",
+        "districts": [
+            "Chunya",
+            "Kyela",
+            "Mbarali district",
+            "Mbeya",
+            "Mbeya City",
+            "Rungwe"
+        ]
+    },
+    {
+        "name": "Morogoro",
+        "districts": [
+            "Gairo",
+            "Kilombero",
+            "Kilosa",
+            "Morogoro Rural",
+            "Morogoro Urban",
+            "Mvomero District",
+            "Ulanga"
+        ]
+    },
+    {
+        "name": "Mtwara",
+        "districts": [
+            "Masasi",
+            "Masasi Town",
+            "Mtwara",
+            "Mtwara Urban",
+            "Nanyumbu District",
+            "Newala",
+            "Tandahimba"
+        ]
+    },
+    {
+        "name": "Mwanza",
+        "districts": [
+            "Ilemela District",
+            "Kwimba District",
+            "Magu",
+            "Misungwi district",
+            "Nyamagana District",
+            "Sengerema",
+            "Ukerewe District"
+        ]
+    },
+    {
+        "name": "Njombe",
+        "districts": [
+            "Ludewa",
+            "Makambako Town",
+            "Makete",
+            "Njombe District Council",
+            "Njombe Town",
+            "Wanging�ombe"
+        ]
+    },
+    {
+        "name": "Pemba North",
+        "districts": [
+            "Micheweni",
+            "Wete District"
+        ]
+    },
+    {
+        "name": "Pemba South",
+        "districts": [
+            "Chake Chake District",
+            "Mkoani District"
+        ]
+    },
+    {
+        "name": "Pwani",
+        "districts": [
+            "Bagamoyo",
+            "Kibaha District",
+            "Kibaha Town",
+            "Kisarawe",
+            "Mafia",
+            "Mkuranga",
+            "Rufiji"
+        ]
+    },
+    {
+        "name": "Rukwa",
+        "districts": [
+            "Kalambo",
+            "Nkasi",
+            "Sumbawanga",
+            "Sumbawanga Urban"
+        ]
+    },
+    {
+        "name": "Ruvuma",
+        "districts": [
+            "Mbinga",
+            "Namtumbo",
+            "Nyasa",
+            "Songea",
+            "Songea Municipal",
+            "Tunduru"
+        ]
+    },
+    {
+        "name": "Shinyanga",
+        "districts": [
+            "Kahama Rural District",
+            "Kahama Town",
+            "Kishapu District",
+            "Shinyanga Rural",
+            "Shinyanga Urban"
+        ]
+    },
+    {
+        "name": "Simiyu",
+        "districts": [
+            "Bariadi",
+            "Busega",
+            "Itilima",
+            "Maswa District",
+            "Meatu"
+        ]
+    },
+    {
+        "name": "Singida",
+        "districts": [
+            "Ikungi",
+            "Iramba",
+            "Manyoni",
+            "Mkalama",
+            "Singida Rural District",
+            "Singida Urban District"
+        ]
+    },
+    {
+        "name": "Songwe",
+        "districts": [
+            "Ileje",
+            "Mbozi",
+            "Momba",
+            "Songwe District",
+            "Tunduma"
+        ]
+    },
+    {
+        "name": "Tabora",
+        "districts": [
+            "Igunga",
+            "Kaliua",
+            "Nzega",
+            "Sikonge District",
+            "Tabora Urban",
+            "Urambo",
+            "Uyui District"
+        ]
+    },
+    {
+        "name": "Tanga",
+        "districts": [
+            "Handeni",
+            "Handeni Town",
+            "Kilindi District",
+            "Korogwe District",
+            "Korogwe Town",
+            "Lushoto",
+            "Mkinga",
+            "Muheza District",
+            "Pangani",
+            "Tanga"
+        ]
+    },
+    {
+        "name": "Zanzibar Central/South",
+        "districts": [
+            "Kati",
+            "Kusini"
+        ]
+    },
+    {
+        "name": "Zanzibar North",
+        "districts": [
+            "Kaskazini A",
+            "Kaskazini B"
+        ]
+    },
+    {
+        "name": "Zanzibar Urban/West",
+        "districts": [
+            "Magharibi",
+            "Mjini"
+        ]
+    }
+]

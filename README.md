@@ -63,10 +63,10 @@ php artisan test
 ```
 
 ## Project Requirement 
-- [ ] Settings (Visit services, departments, countries, regions, 
-            districts, laboratory tests, medicines, icd10 codes, attendants, bills, bill items)
+- [x] Settings (Visit services, departments, countries, regions, 
+            districts, laboratory tests, medicines, icd10 codes, attendants)
 - [ ] Patient Registration
-- [ ] Visit Registration
+- [ ] Visit Registration (bills, bill items)
 - [ ] Patient History (Vital signs, complaints, medications,  birth history, family and social,
                         gynaecological and obstetric,system review, diagnoses, investigations)
 - [ ] Investigation Sample registration
@@ -79,6 +79,7 @@ php artisan test
 - [ ] Inventory Tracking (Stock registration, sale registration)
 - [ ] MTUHA Report Export
 - [ ] Patient Medical History Export
+- [ ] Patient Referral Export
 - [ ] Sample Label Export
 - [ ] Bill Export
 - [ ] Prescription Export
