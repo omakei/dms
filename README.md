@@ -66,8 +66,8 @@ php artisan test
 - [x] Settings (Visit services, departments, countries, regions, 
             districts, laboratory tests, medicines, icd10 codes, attendants)
 - [x] Patient Registration
-- [ ] Visit Registration (bills, bill items)
-- [ ] Patient History (Vital signs, complaints, medications,  birth history, family and social,
+- [x] Visit Registration (bills, bill items)
+- [x] Patient History (Vital signs, complaints, medications,  birth history, family and social,
                         gynaecological and obstetric,system review, diagnoses, investigations)
 - [ ] Investigation Sample registration
 - [ ] Investigation Result registration

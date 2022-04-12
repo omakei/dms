@@ -27,6 +27,11 @@ class PatientVisitResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('visit_number')
+                    ->required()
+                    ->disabled()
+                    ->default('PV-'.now()->year.'-'.rand(111,555).'-'.rand(666,999))
+                    ->maxLength(255),
                 Forms\Components\Select::make('patient_id')
                     ->label('patient')
                     ->options(Patient::all()->pluck('full_name', 'id'))
@@ -42,8 +47,11 @@ class PatientVisitResource extends Resource
                     ->options(VisitType::all()->pluck('name', 'id'))
                     ->searchable()
                     ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->hidden()
+                Forms\Components\Hidden::make('started_at')
+                    ->default(now()->toDateString())
+                    ->required(),
+                Forms\Components\Hidden::make('status')
+                    ->default(1)
                     ->required(),
             ]);
     }
@@ -52,12 +60,15 @@ class PatientVisitResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('visit_number')
+                    ->label('Visit Number')
+                    ->searchable(['visit_number']),
                 Tables\Columns\TextColumn::make('patient.full_name')
                     ->label('Patient name')
-                    ->searchable(['patient.first_name','patient.middle_name','patient.last_name',]),
+                    ->searchable(['patient.first_name','patient.middle_name','patient.last_name']),
                 Tables\Columns\TextColumn::make('attendant.full_name')
                     ->label('Doctor name')
-                    ->searchable(['attendant.first_name','attendant.middle_name','attendant.last_name',]),
+                    ->searchable(['attendant.first_name','attendant.middle_name','attendant.last_name']),
                 Tables\Columns\TextColumn::make('visit_type.name')->label('Visit Type'),
                 Tables\Columns\TextColumn::make('started_at')
                     ->date(),
@@ -90,8 +101,17 @@ class PatientVisitResource extends Resource
 
     public static function getRelations(): array
     {
+//        dd(auth()->user()->hasRole('super_admin'));
         return [
-            //
+            RelationManagers\VitalSignsRelationManager::class,
+            RelationManagers\MedicalHistoriesRelationManager::class,
+            RelationManagers\ComplaintHistoriesRelationManager::class,
+            RelationManagers\BirthHistoriesRelationManager::class,
+            RelationManagers\SocialHistoriesRelationManager::class,
+            RelationManagers\GynaecologicalHistoriesRelationManager::class,
+            RelationManagers\SystemReviewHistoriesRelationManager::class,
+            RelationManagers\DiagnosesRelationManager::class,
+            RelationManagers\InvestigationsRelationManager::class,
         ];
     }
 

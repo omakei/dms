@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('patient_visits', function (Blueprint $table) {
             $table->id();
+            $table->string('visit_number');
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('attendant_id')->constrained();
             $table->dateTime('started_at');

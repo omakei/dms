@@ -7,10 +7,13 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class UserResource extends Resource
 {
@@ -37,6 +40,14 @@ class UserResource extends Resource
                     ->maxLength(255)
                 ->dehydrateStateUsing(fn(string $state)=> filled($state) ? Hash::make($state): null)
                 ->dehydrated(fn($state)=> filled($state)),
+
+                Forms\Components\MultiSelect::make('roles')
+                    ->required()
+                    ->options(Role::all()->pluck('name','id'))
+                    ->default(1)
+                    ->hidden(fn (Component $livewire): bool => $livewire instanceof Pages\CreateUser)
+                    ->reactive()
+                    ->afterStateUpdated(fn ($state, User $record) => ($record->syncRoles($state))),
             ]);
     }
 
@@ -71,4 +82,6 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
+
 }
