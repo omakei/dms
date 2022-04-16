@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->integer('result_is_published')->default(0);
             $table->foreignId('result_publisher')->nullable()->constrained('users', 'id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

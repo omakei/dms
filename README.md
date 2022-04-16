@@ -69,20 +69,21 @@ php artisan test
 - [x] Visit Registration (bills, bill items)
 - [x] Patient History (Vital signs, complaints, medications,  birth history, family and social,
                         gynaecological and obstetric,system review, diagnoses, investigations)
-- [ ] Investigation Sample registration
-- [ ] Investigation Result registration
-- [ ] Medicine Prescription 
-- [ ] Advice (referral internal or external)
-- [ ] Ward & Bed Registration
-- [ ] Bed Assignment
-- [ ] Store Registration
-- [ ] Inventory Tracking (Stock registration, sale registration)
+- [x] Investigation Sample registration
+- [x] Investigation Result registration
+- [x] Medicine Prescription 
+- [x] Advice (referral external)
+- [x] Ward & Bed Registration
+- [x] Bed Assignment
+- [x] Store Registration
+- [x] Inventory Tracking (Stock registration, sale registration)
 - [ ] MTUHA Report Export
 - [ ] Patient Medical History Export
-- [ ] Patient Referral Export
-- [ ] Sample Label Export
+- [x] Patient Referral Export
+- [x] Sample Label Export
 - [ ] Bill Export
-- [ ] Prescription Export
+- [ ] NHIF Claim Export
+- [x] Prescription Export
 - [ ] Access Control
 
 ## Changelog

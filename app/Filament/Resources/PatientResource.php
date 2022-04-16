@@ -53,7 +53,17 @@ class PatientResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\VitalSignsRelationManager::class,
+            RelationManagers\MedicalHistoriesRelationManager::class,
+            RelationManagers\ComplaintHistoriesRelationManager::class,
+            RelationManagers\BirthHistoriesRelationManager::class,
+            RelationManagers\SocialHistoriesRelationManager::class,
+            RelationManagers\GynaecologicalHistoriesRelationManager::class,
+            RelationManagers\SystemReviewHistoriesRelationManager::class,
+            RelationManagers\DiagnosesRelationManager::class,
+            RelationManagers\InvestigationsRelationManager::class,
+            RelationManagers\PrescriptionsRelationManager::class,
+            RelationManagers\ReferralsRelationManager::class,
         ];
     }
 

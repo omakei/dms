@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('central_nervous')->nullable();
             $table->text('endocrine')->nullable();
             $table->foreignId('patient_visit_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

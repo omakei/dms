@@ -7,10 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class PatientVisit extends Model
 {
-    use HasFactory;
+    use HasFactory,LogsActivity;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
+    }
 
 
     public function patient(): BelongsTo
@@ -76,5 +85,15 @@ class PatientVisit extends Model
     public function investigations(): HasMany
     {
         return $this->hasMany(PatientInvestigation::class);
+    }
+
+    public function prescriptions(): HasMany
+    {
+        return $this->hasMany(PatientPrescription::class);
+    }
+
+    public function referrals(): HasMany
+    {
+        return $this->hasMany(PatientReferral::class);
     }
 }

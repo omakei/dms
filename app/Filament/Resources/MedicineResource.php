@@ -48,7 +48,7 @@ class MedicineResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('manufacture')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('route'),
-                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('price')->money('TZS',true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
             ])

@@ -2,7 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\Bill;
+use App\Models\BillItem;
+use App\Models\Inventory;
+use App\Models\PatientInvestigation;
+use App\Models\PatientPrescription;
 use App\Models\PatientVisit;
+use App\Models\Purchases;
+use App\Models\Sale;
+use App\Models\Store;
 use App\Models\VitalSign;
 use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
@@ -39,5 +47,126 @@ class AppServiceProvider extends ServiceProvider
             $vital_sign->patient_id = (PatientVisit::find($vital_sign->patient_visit_id))->id;
         });
 
+        PatientInvestigation::creating(function ($patient_investigation) {
+            $bill = Bill::where(['patient_visit_id' => $patient_investigation->patient_visit_id])->first();
+
+            BillItem::create([
+                'bill_id' => $bill->id,
+                'billable_id' => $patient_investigation->id,
+                'billable_type' => get_class($patient_investigation)
+            ]);
+        });
+
+        PatientInvestigation::deleting(function ($patient_investigation) {
+            $bill = Bill::where(['patient_visit_id' => $patient_investigation->patient_visit_id])->first();
+
+            $bill_item = BillItem::where([
+                'bill_id' => $bill->id,
+                'billable_id' => $patient_investigation->id,
+                'billable_type' => get_class($patient_investigation)
+            ])->first();
+
+            $bill_item->delete();
+        });
+
+        PatientPrescription::creating(function ($patient_prescription) {
+            $bill = Bill::where(['patient_visit_id' => $patient_prescription->patient_visit_id])->first();
+
+            BillItem::create([
+                'bill_id' => $bill->id,
+                'billable_id' => $patient_prescription->medicine->id,
+                'billable_type' => get_class($patient_prescription->medicine)
+            ]);
+        });
+
+        PatientPrescription::deleting(function ($patient_prescription) {
+            $bill = Bill::where(['patient_visit_id' => $patient_prescription->patient_visit_id])->first();
+
+            $bill_item = BillItem::where([
+                'bill_id' => $bill->id,
+                'billable_id' => $patient_prescription->medicine->id,
+                'billable_type' => get_class($patient_prescription->medicine)
+            ])->first();
+
+            $bill_item->delete();
+        });
+
+        Purchases::creating(function ($purchase) {
+            $store = Store::inRandomOrder()->first();
+           $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
+           if(empty($inventory)){
+               Inventory::create([
+                   'store_id' => $store->id,
+                   'medicine_id' => $purchase->medicine_id,
+                   'quantity' => $purchase->quantity
+               ]);
+           }
+           if(!empty($inventory)){
+               $inventory->update([
+                   'quantity' => $inventory->quantity + $purchase->quantity
+               ]);
+           }
+
+        });
+
+        Purchases::updating(function ($purchase) {
+            $store = Store::inRandomOrder()->first();
+            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
+
+            if(!empty($inventory)){
+                $inventory->update([
+                    'quantity' => $inventory->quantity + $purchase->quantity
+                ]);
+            }
+
+        });
+
+        Purchases::deleting(function ($purchase) {
+            $store = Store::inRandomOrder()->first();
+            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
+
+            if(!empty($inventory)){
+                $inventory->update([
+                    'quantity' => $inventory->quantity - $purchase->quantity
+                ]);
+            }
+
+        });
+
+        Sale::creating(function ($sale) {
+            $store = Store::inRandomOrder()->first();
+            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $sale->medicine_id])->first();
+
+            if(!empty($inventory)){
+                $inventory->update([
+                    'quantity' => $inventory->quantity - $sale->quantity
+                ]);
+            }
+
+        });
+
+        Sale::updating(function ($sale) {
+            $store = Store::inRandomOrder()->first();
+            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $sale->medicine_id])->first();
+
+            if(!empty($inventory)){
+                $inventory->update([
+                    'quantity' => $inventory->quantity + $sale->quantity
+                ]);
+            }
+
+        });
+
+        Sale::deleting(function ($sale) {
+            $store = Store::inRandomOrder()->first();
+            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $sale->medicine_id])->first();
+
+            if(!empty($inventory)){
+                $inventory->update([
+                    'quantity' => $inventory->quantity + $sale->quantity
+                ]);
+            }
+
+        });
     }
 }

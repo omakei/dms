@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bill_id')->constrained();
             $table->morphs('billable');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

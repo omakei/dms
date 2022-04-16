@@ -102,17 +102,39 @@ class PatientVisitResource extends Resource
     public static function getRelations(): array
     {
 //        dd(auth()->user()->hasRole('super_admin'));
-        return [
-            RelationManagers\VitalSignsRelationManager::class,
-            RelationManagers\MedicalHistoriesRelationManager::class,
-            RelationManagers\ComplaintHistoriesRelationManager::class,
-            RelationManagers\BirthHistoriesRelationManager::class,
-            RelationManagers\SocialHistoriesRelationManager::class,
-            RelationManagers\GynaecologicalHistoriesRelationManager::class,
-            RelationManagers\SystemReviewHistoriesRelationManager::class,
-            RelationManagers\DiagnosesRelationManager::class,
-            RelationManagers\InvestigationsRelationManager::class,
-        ];
+
+        if(auth()->user()->hasRole('super_admin')){
+            return [
+                RelationManagers\VitalSignsRelationManager::class,
+                RelationManagers\MedicalHistoriesRelationManager::class,
+                RelationManagers\ComplaintHistoriesRelationManager::class,
+                RelationManagers\BirthHistoriesRelationManager::class,
+                RelationManagers\SocialHistoriesRelationManager::class,
+                RelationManagers\GynaecologicalHistoriesRelationManager::class,
+                RelationManagers\SystemReviewHistoriesRelationManager::class,
+                RelationManagers\DiagnosesRelationManager::class,
+                RelationManagers\InvestigationsRelationManager::class,
+                RelationManagers\PrescriptionsRelationManager::class,
+                RelationManagers\ReferralsRelationManager::class,
+            ];
+        }
+
+
+        if(auth()->user()->hasRole('laboratory')) {
+            return [
+                RelationManagers\VitalSignsRelationManager::class,
+                RelationManagers\InvestigationsRelationManager::class,
+            ];
+        }
+
+        if(auth()->user()->hasRole('nurse')) {
+            return [
+                RelationManagers\VitalSignsRelationManager::class,
+            ];
+        }
+
+        return [];
+
     }
 
     public static function getPages(): array
@@ -121,6 +143,7 @@ class PatientVisitResource extends Resource
             'index' => Pages\ListPatientVisits::route('/'),
             'create' => Pages\CreatePatientVisit::route('/create'),
             'edit' => Pages\EditPatientVisit::route('/{record}/edit'),
+            'view' => Pages\ViewPatientVisit::route('/{record}'),
         ];
     }
 }

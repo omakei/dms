@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-
+Route::get('download-label/{investigation}', [ReportController::class, 'label'])
+        ->name('label.download');
+Route::get('download-referral/{referral}', [ReportController::class, 'referral'])
+    ->name('referral.download');
+Route::get('download-prescription/{prescription}', [ReportController::class, 'prescription'])
+    ->name('prescription.download');

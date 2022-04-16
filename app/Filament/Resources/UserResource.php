@@ -41,13 +41,6 @@ class UserResource extends Resource
                 ->dehydrateStateUsing(fn(string $state)=> filled($state) ? Hash::make($state): null)
                 ->dehydrated(fn($state)=> filled($state)),
 
-                Forms\Components\MultiSelect::make('roles')
-                    ->required()
-                    ->options(Role::all()->pluck('name','id'))
-                    ->default(1)
-                    ->hidden(fn (Component $livewire): bool => $livewire instanceof Pages\CreateUser)
-                    ->reactive()
-                    ->afterStateUpdated(fn ($state, User $record) => ($record->syncRoles($state))),
             ]);
     }
 
@@ -70,7 +63,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\RolesRelationManager::class,
         ];
     }
 

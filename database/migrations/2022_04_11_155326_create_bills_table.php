@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('patient_visit_id')->constrained();
             $table->string('bill_number');
             $table->string('payment_status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

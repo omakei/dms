@@ -44,7 +44,7 @@ class LaboratoryTestResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('code'),
-                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('price')->money('TZS',true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
             ])

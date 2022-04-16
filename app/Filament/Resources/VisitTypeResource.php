@@ -26,7 +26,7 @@ class VisitTypeResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('amount')
+                Forms\Components\TextInput::make('price')
                     ->numeric()
                     ->required(),
                 Forms\Components\Textarea::make('description')
@@ -39,7 +39,7 @@ class VisitTypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('price')->money('TZS',true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
             ])
