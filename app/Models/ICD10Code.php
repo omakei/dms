@@ -14,7 +14,7 @@ class ICD10Code extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
 }

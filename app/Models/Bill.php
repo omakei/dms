@@ -16,8 +16,8 @@ class Bill extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
 
     public function bill_items(): HasMany

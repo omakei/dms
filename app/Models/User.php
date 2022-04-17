@@ -18,8 +18,8 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
     /**
      * The attributes that are mass assignable.

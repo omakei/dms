@@ -16,8 +16,8 @@ class PatientInvestigation extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
 
     public function laboratory_test(): BelongsTo

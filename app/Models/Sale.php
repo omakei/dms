@@ -15,8 +15,8 @@ class Sale extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
 
     public function visit(): BelongsTo

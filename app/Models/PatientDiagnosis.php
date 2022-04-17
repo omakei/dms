@@ -15,8 +15,8 @@ class PatientDiagnosis extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logUnguarded()
+            ->logOnlyDirty();
     }
 
     public function i_c_d10_code(): BelongsTo
