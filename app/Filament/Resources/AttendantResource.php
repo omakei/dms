@@ -25,14 +25,6 @@ class AttendantResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                ->label('User')
-                ->options(User::all()->pluck('name','id'))
-                ->required(),
-                Forms\Components\Select::make('department_id')
-                    ->label('Department')
-                    ->options(Department::all()->pluck('name','id'))
-                    ->required(),
                 Forms\Components\TextInput::make('first_name')
                     ->required()
                     ->maxLength(255),
@@ -62,6 +54,14 @@ class AttendantResource extends Resource
                         'Doctor' => 'Doctor',
                         'Nurse' => 'Nurse',
                     ]),
+                Forms\Components\Select::make('user_id')
+                    ->label('User')
+                    ->options(User::all()->pluck('name','id'))
+                    ->required(),
+                Forms\Components\Select::make('department_id')
+                    ->label('Department')
+                    ->options(Department::all()->pluck('name','id'))
+                    ->required(),
                 Forms\Components\Textarea::make('specializations')
                     ->maxLength(65535),
             ]);

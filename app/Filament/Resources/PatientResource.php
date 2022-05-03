@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PatientResource\Pages;
 use App\Filament\Resources\PatientResource\RelationManagers;
+use App\Filament\Resources\PatientResource\Widgets\PatientOverview;
 use App\Models\Country;
 use App\Models\District;
 use App\Models\Patient;
@@ -75,6 +76,8 @@ class PatientResource extends Resource
             'edit' => Pages\EditPatient::route('/{record}/edit'),
         ];
     }
+
+
 
     public static function getFormSchema(string $layout = Forms\Components\Grid::class): array
     {

@@ -2,7 +2,10 @@
 
 namespace App\Filament\Resources\PatientResource\RelationManagers;
 
+use App\Filament\Resources\StoreResource\RelationManagers\SalesRelationManager;
 use App\Models\Medicine;
+use App\Models\PatientPrescription;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\HasManyRelationManager;
@@ -88,14 +91,31 @@ class PrescriptionsRelationManager extends HasManyRelationManager
                     ->html()
                     ->label('Instructions'),
             ])
+            ->prependActions([
+                Tables\Actions\LinkAction::make('Dispense')
+                    ->url(fn (PatientPrescription $record) => $record)
+                    ->form([
+                        Forms\Components\Select::make('authorId')
+                            ->label('Author')
+                            ->options(User::query()->pluck('name', 'id'))
+                            ->required(),
+                        Forms\Components\TextInput::make('quantity')
+                            ->required()
+                            ->numeric(),
+                    ])
+                    ->color('heroicon-o-clipboard-check'),
+            ])
             ->prependBulkActions([
                 Tables\Actions\BulkAction::make('Download')
-                    ->action(fn (Collection $records) => redirect(route('prescription.download', ($records->first())->id)))
+                    ->url(fn (Collection $records) => redirect(route('prescription.download', ($records->first())->id)))
                     ->color('success')
                     ->icon('heroicon-o-download'),
+
             ])
             ->filters([
                 //
             ]);
     }
+
+
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Bill;
 use App\Models\BillItem;
 use App\Models\Inventory;
+use App\Models\LaboratoryTest;
 use App\Models\PatientInvestigation;
 use App\Models\PatientPrescription;
 use App\Models\PatientVisit;
@@ -47,17 +48,17 @@ class AppServiceProvider extends ServiceProvider
             $vital_sign->patient_id = (PatientVisit::find($vital_sign->patient_visit_id))->id;
         });
 
-        PatientInvestigation::creating(function ($patient_investigation) {
+        PatientInvestigation::created(function ($patient_investigation) {
             $bill = Bill::where(['patient_visit_id' => $patient_investigation->patient_visit_id])->first();
 
             BillItem::create([
                 'bill_id' => $bill->id,
-                'billable_id' => $patient_investigation->id,
-                'billable_type' => get_class($patient_investigation)
+                'billable_id' => $patient_investigation->laboratory_test_id,
+                'billable_type' => LaboratoryTest::class
             ]);
         });
 
-        PatientInvestigation::deleting(function ($patient_investigation) {
+        PatientInvestigation::deleted(function ($patient_investigation) {
             $bill = Bill::where(['patient_visit_id' => $patient_investigation->patient_visit_id])->first();
 
             $bill_item = BillItem::where([
@@ -69,7 +70,7 @@ class AppServiceProvider extends ServiceProvider
             $bill_item->delete();
         });
 
-        PatientPrescription::creating(function ($patient_prescription) {
+        PatientPrescription::created(function ($patient_prescription) {
             $bill = Bill::where(['patient_visit_id' => $patient_prescription->patient_visit_id])->first();
 
             BillItem::create([
@@ -79,7 +80,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        PatientPrescription::deleting(function ($patient_prescription) {
+        PatientPrescription::deleted(function ($patient_prescription) {
             $bill = Bill::where(['patient_visit_id' => $patient_prescription->patient_visit_id])->first();
 
             $bill_item = BillItem::where([
@@ -91,7 +92,7 @@ class AppServiceProvider extends ServiceProvider
             $bill_item->delete();
         });
 
-        Purchases::creating(function ($purchase) {
+        Purchases::created(function ($purchase) {
             $store = Store::inRandomOrder()->first();
            $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
            if(empty($inventory)){
@@ -109,7 +110,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        Purchases::updating(function ($purchase) {
+        Purchases::updated(function ($purchase) {
             $store = Store::inRandomOrder()->first();
             $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
 
@@ -121,7 +122,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        Purchases::deleting(function ($purchase) {
+        Purchases::deleted(function ($purchase) {
             $store = Store::inRandomOrder()->first();
             $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $purchase->medicine_id])->first();
 
@@ -133,7 +134,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        Sale::creating(function ($sale) {
+        Sale::created(function ($sale) {
             $store = Store::inRandomOrder()->first();
             $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $sale->medicine_id])->first();
 
@@ -157,7 +158,7 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        Sale::deleting(function ($sale) {
+        Sale::deleted(function ($sale) {
             $store = Store::inRandomOrder()->first();
             $inventory = Inventory::where(['store_id'=> $store->id, 'medicine_id' => $sale->medicine_id])->first();
 

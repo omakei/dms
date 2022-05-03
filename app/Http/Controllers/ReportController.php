@@ -7,6 +7,7 @@ use App\Models\PatientPrescription;
 use App\Models\PatientReferral;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ReportController extends Controller
@@ -39,5 +40,35 @@ class ReportController extends Controller
             ->setPaper('a4','landscape');
 
         return $pdf->stream('prescription-'.$prescription->visit->visit_number.now()->unix().'.pdf');
+    }
+
+    public  function claim(PatientPrescription $prescription)
+    {
+
+        $pdf = PDF::loadView('templates.claim',
+            ['data' => [], 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
+            ->setPaper('a4','landscape');
+
+        return $pdf->stream('claim-'. Str::uuid().'.pdf');
+    }
+
+    public  function bill(PatientPrescription $prescription)
+    {
+
+        $pdf = PDF::loadView('templates.bill',
+            ['data' => [], 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
+            ->setPaper('a4','landscape');
+
+        return $pdf->stream('bill-'. Str::uuid().'.pdf');
+    }
+
+    public  function mtuha(PatientPrescription $prescription)
+    {
+
+        $pdf = PDF::loadView('templates.bill',
+            ['data' => [], 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
+            ->setPaper('a4','landscape');
+
+        return $pdf->stream('bill-'. Str::uuid().'.pdf');
     }
 }

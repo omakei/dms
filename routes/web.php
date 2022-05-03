@@ -24,3 +24,8 @@ Route::get('download-referral/{referral}', [ReportController::class, 'referral']
     ->name('referral.download');
 Route::get('download-prescription/{prescription}', [ReportController::class, 'prescription'])
     ->name('prescription.download');
+
+Route::get('download-claim', [ReportController::class, 'claim'])
+    ->name('claim.download');
+Route::get('download-bill', [ReportController::class, 'bill'])
+    ->name('bill.download');

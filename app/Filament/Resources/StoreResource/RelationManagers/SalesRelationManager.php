@@ -20,8 +20,8 @@ class SalesRelationManager extends HasManyRelationManager
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('patient_visit_id')
-                    ->label('Patient Visit')
+                Forms\Components\Select::make('patient_prescription_id')
+                    ->label('Patient Prescription')
                     ->searchable()
                     ->getSearchResultsUsing(fn (string $searchQuery) => PatientVisit::where('visit_number', 'like', "%{$searchQuery}%")
                         ->limit(50)->pluck('visit_number', 'id'))
