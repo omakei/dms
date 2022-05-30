@@ -6,7 +6,7 @@
     </tr>
     <tr>
         <td calspan="4" align="center" style="text-align: center;padding: 4px;">CONFIDENTIAL</td>
-        <td style="text-align: center;padding: 4px;"> Serial No: 21/20</td>
+        <td style="text-align: center;padding: 4px;"> Serial No: 21/22</td>
     </tr>
     <tr>
         <td  calspan="5" align="center" style="text-align: center;padding: 4px;">THE NHIF - HEALTH PROVIDER IN / OUT PATIENT CLAIM FORM</td>

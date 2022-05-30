@@ -13,39 +13,40 @@
             <tbody>
             <tr>
                 <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Patient Name: </td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ (\App\Models\Patient::find($data->visit->patient_id))->full_name}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ (\App\Models\Patient::find($data->patient_id))->full_name}}</td>
                 <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Gender: </td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{(\App\Models\Patient::find($data->visit->patient_id))->gender}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{(\App\Models\Patient::find($data->patient_id))->gender}}</td>
                 <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Patient Number: </td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{(\App\Models\Patient::find($data->visit->patient_id))->patient_number}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{(\App\Models\Patient::find($data->patient_id))->patient_number}}</td>
             </tr>
             </tbody>
         </table>
         <br/>
         <table width="100%" style="border-spacing: 0;"> <thead>
             <tr>
-                <th style="border:1px solid #000; text-align: center;padding: 4px;"  colspan="14">Prescription Information</th>
+                <th style="border:1px solid #000; text-align: center;padding: 4px;"  colspan="3">Billable Information</th>
+            </tr>
+            <tr>
+                <th style="border:1px solid #000; text-align: center;padding: 4px;">Name</th>
+                <th style="border:1px solid #000; text-align: center;padding: 4px;">Type</th>
+                <th style="border:1px solid #000; text-align: center;padding: 4px;">Amount</th>
             </tr>
             </thead>
             <tbody>
-            @foreach((\App\Models\PatientVisit::find($data->patient_visit_id))->prescriptions as $prescription)
+            @foreach((\App\Models\Bill::find($bill->id))->bill_items as $item)
                 <tr>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;"> Medicine Name: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->medicine->name }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Dosage: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->dosage }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Frequency: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->frequency }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Duration: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->duration }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Food relation: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->food_relation }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Route: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $prescription->route }}</td>
-                    <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Instructions: </td>
-                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{!! $prescription->instructions  !!}</td>
+                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $item->billable->name }}</td>
+                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ str_replace('App\Models\\','',$item->billable_type) }}</td>
+                    <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ number_format($item->billable->price, 2) }} TZS</td>
                 </tr>
             @endforeach
+                <tr>
+                    <td style="border:1px solid #000; text-align: center;padding: 4px;" colspan="2">Total</td>
+                    <td style="border:1px solid #000; text-align: center;padding: 4px;" colspan="3">{{ number_format((\App\Models\Bill::find($bill->id))
+                            ->bill_items->sum(function ($item) {
+                                return $item->billable->price;
+                            }), 2) }} TZS</td>
+                </tr>
             </tbody>
         </table>
         <br/>

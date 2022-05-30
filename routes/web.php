@@ -27,5 +27,5 @@ Route::get('download-prescription/{prescription}', [ReportController::class, 'pr
 
 Route::get('download-claim', [ReportController::class, 'claim'])
     ->name('claim.download');
-Route::get('download-bill', [ReportController::class, 'bill'])
+Route::get('download-bill/{bill}', [ReportController::class, 'bill'])
     ->name('bill.download');

@@ -10,7 +10,7 @@
             </tr>
             <tr>
                 <td style="padding: 4px;">1) Name of Health Facility: DIT Despensary </td>
-                <td style="padding: 4px;">2) Address: Dar es salaam, Upanga</td>
+                <td style="padding: 4px;">2) Address: Dar es salaam, Ilala</td>
                 <td style="padding: 4px;">3) Department: OPD</td>
                 <td colspan="2" style="padding: 4px;">4) Date of attendance: {{now()->toDateString()}}</td>
             </tr>
@@ -18,21 +18,30 @@
                 <td colspan="5" style="font-weight: bold; text-align: left;padding: 4px;">A2. Patient's Particulars</td>
             </tr>
             <tr>
-                <td style="padding: 4px;">1) Name of Patient: Michael Omakei</td>
-                <td style="padding: 4px;">2) DOB: {{(now()->subYears(25))->toDateString()}}</td>
-                <td style="padding: 4px;">3) Sex M/F: M</td>
-                <td style="padding: 4px;">4) Occupation: Engineer</td>
-                <td style="padding: 4px;">5) Patient's File No: PV-2021-983-234</td>
+                <td style="padding: 4px;">1) Name of Patient: {{(\App\Models\Patient::find($data->patient_id))->full_name}}</td>
+                <td style="padding: 4px;">2) DOB: {{(\App\Models\Patient::find($data->patient_id))->dob}}</td>
+                <td style="padding: 4px;">3) Sex M/F: {{(\App\Models\Patient::find($data->patient_id))->gender}}</td>
+                <td style="padding: 4px;">4) Occupation: Student</td>
+                <td style="padding: 4px;">5) Patient's File No: {{ (\App\Models\Patient::find($data->patient_id))->patient_number }}</td>
             </tr>
             <tr>
-                <td style="padding: 4px;">6) Patient's Physical Address: Mikocheni</td>
-                <td style="padding: 4px;">7) Card No: 987664738833</td>
-                <td colspan="2"  style="padding: 4px;">8) Authorization No: 987664738832</td>
+                <td style="padding: 4px;">6) Patient's Physical Address: {{(\App\Models\Patient::find($data->patient_id))->address}}</td>
+                <td style="padding: 4px;">7) Card No: {{ (\App\Models\Patient::find($data->patient_id))->insurance_number}}</td>
+                <td colspan="2"  style="padding: 4px;">8) Authorization No: {{(\App\Models\Patient::find($data->patient_id))->insurance_number}}</td>
             </tr>
             <tr>
-                <td style="padding: 4px;">9) Vote No: Mikocheni</td>
-                <td style="padding: 4px;">10) Preliminary Diagnosis: A0104, A0105, A0106</td>
-                <td colspan="2"  style="padding: 4px;">11) Final Diagnosis: A0104, A0105, A0106</td>
+                <td style="padding: 4px;">9) Vote No: {{ (\App\Models\Patient::find($data->patient_id))->insurance_number}}</td>
+                <td style="padding: 4px;">10) Preliminary Diagnosis: {{ (\App\Models\PatientVisit::find($data->patient_visit_id))?->diagnoses->each(function ($item){
+                        if($item->type == 'Provisional') {
+                            return $item->i_c_d10_code->name;
+                        }
+                    })}}
+                </td>
+                <td colspan="2"  style="padding: 4px;">11) Final Diagnosis: {{ (\App\Models\PatientVisit::find($data->patient_visit_id))?->diagnoses->each(function ($item){
+                        if($item->type == 'Confirmed') {
+                            return $item->i_c_d10_code->name;
+                        }
+                    })}}</td>
             </tr>
         </table>
         <br/>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bill;
+use App\Models\Patient;
 use App\Models\PatientInvestigation;
 use App\Models\PatientPrescription;
 use App\Models\PatientReferral;
+use App\Models\PatientVisit;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -52,11 +55,21 @@ class ReportController extends Controller
         return $pdf->stream('claim-'. Str::uuid().'.pdf');
     }
 
-    public  function bill(PatientPrescription $prescription)
+    public  function bill(Bill $bill)
     {
+        $patient = Patient::find($bill->patient_id);
+
+        if($patient->insurance_type == 'NSSF') {
+
+            $pdf = PDF::loadView('templates.mtuha',
+                ['data' => PatientVisit::find($bill->patient_visit_id), 'bill' => $bill, 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
+                ->setPaper('a4','landscape');
+
+            return $pdf->stream('claim-'. Str::uuid().'.pdf');
+        }
 
         $pdf = PDF::loadView('templates.bill',
-            ['data' => [], 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
+            ['data' => PatientVisit::find($bill->patient_visit_id), 'bill' => $bill, 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
             ->setPaper('a4','landscape');
 
         return $pdf->stream('bill-'. Str::uuid().'.pdf');
