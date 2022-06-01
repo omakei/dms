@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -28,6 +29,14 @@ class Patient extends Model
             get: fn ($value, $attributes) => $attributes['first_name'].' '. $attributes['middle_name'].' '. $attributes['last_name']
         );
     }
+
+    public  function Age(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value, $attributes) => Carbon::make($attributes['dob'])->diffInYears(Carbon::now())
+        );
+    }
+
 
     public function bill(): HasOne
     {

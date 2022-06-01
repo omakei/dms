@@ -19,13 +19,13 @@
     </tr>
 
     <tr>
-        <td style="text-align: center;padding: 4px;">Jina la Kituo: DIT DISPENSARY</td>
+        <td style="text-align: center;padding: 4px;">Jina la Kituo: DIT Dispensary</td>
         <td style="text-align: center;padding: 4px;">Wilaya: Ilala</td>
         <td style="text-align: center;padding: 4px;">Mkoa: Dar es salaam</td>
     </tr>
     <tr>
-        <td style="text-align: center;padding: 4px;">Tarehe ya kuanza: </td>
-        <td colspan="2" style="text-align: center;padding: 4px;">Tarehe ya kumaliza: </td>
+        <td style="text-align: center;padding: 4px;">Tarehe ya kuanza: {{ $from }}</td>
+        <td colspan="2" style="text-align: center;padding: 4px;">Tarehe ya kumaliza: {{ $to }} </td>
     </tr>
 </table>
 

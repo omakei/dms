@@ -29,3 +29,6 @@ Route::get('download-claim', [ReportController::class, 'claim'])
     ->name('claim.download');
 Route::get('download-bill/{bill}', [ReportController::class, 'bill'])
     ->name('bill.download');
+
+Route::get('download-mtuha/{report}', [ReportController::class, 'mtuha'])
+    ->name('mtuha.download');

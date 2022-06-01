@@ -40,8 +40,7 @@ class PatientResource extends Resource
                 Tables\Columns\TextColumn::make('patient_number')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('full_name')->sortable()->searchable(['first_name','middle_name', 'last_name']),
                 Tables\Columns\TextColumn::make('gender'),
-                Tables\Columns\TextColumn::make('dob')
-                    ->date(),
+                Tables\Columns\TextColumn::make('age'),
                 Tables\Columns\TextColumn::make('insurance_type'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),

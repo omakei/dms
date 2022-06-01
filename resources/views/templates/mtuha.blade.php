@@ -1,6 +1,6 @@
 @extends('templates.layout')
 @section('content')
-    @include('templates.mtuha_header')
+    @include('templates.mtuha_header', ['from' => $data['from'], 'to' => $data['to']])
 <style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;}
     .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -47,24 +47,24 @@
     <tr>
         <td class="tg-0lax">1</td>
         <td class="tg-0lax">Mahudhurio ya OPD</td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
-        <td class="tg-0lax"></td>
+        <td class="tg-0lax">{{ $data['one_month']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['one_month']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['one_month']['total'] }}</td>
+        <td class="tg-0lax">{{ $data['one_year']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['one_year']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['one_year']['total'] }}</td>
+        <td class="tg-0lax">{{ $data['five_year']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['five_year']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['five_year']['total'] }}</td>
+        <td class="tg-0lax">{{ $data['sixty_year']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['sixty_year']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['sixty_year']['total'] }}</td>
+        <td class="tg-0lax">{{ $data['above_sixty_year']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['above_sixty_year']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['above_sixty_year']['total'] }}</td>
+        <td class="tg-0lax">{{ $data['total']['me'] }}</td>
+        <td class="tg-0lax">{{ $data['total']['ke'] }}</td>
+        <td class="tg-0lax">{{ $data['total']['total'] }}</td>
     </tr>
     <tr>
         <td class="tg-0lax">2<br></td>
