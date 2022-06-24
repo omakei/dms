@@ -31,16 +31,19 @@
             </tr>
             <tr>
                 <td style="padding: 4px;">9) Vote No: {{ (\App\Models\Patient::find($data->patient_id))->insurance_number}}</td>
-                <td style="padding: 4px;">10) Preliminary Diagnosis: {{ (\App\Models\PatientVisit::find($data->patient_visit_id))?->diagnoses->each(function ($item){
+                <td style="padding: 4px;">10) Preliminary Diagnosis: {{ (\App\Models\PatientVisit::find($data->id))?->diagnoses->map(function ($item){
                         if($item->type == 'Provisional') {
-                            return $item->i_c_d10_code->name;
+                            return $item->i_c_d10_code->code;
                         }
+                        return;
                     })}}
                 </td>
-                <td colspan="2"  style="padding: 4px;">11) Final Diagnosis: {{ (\App\Models\PatientVisit::find($data->patient_visit_id))?->diagnoses->each(function ($item){
+                <td colspan="2"  style="padding: 4px;">11) Final Diagnosis: {{ (\App\Models\PatientVisit::find($data->id))?->diagnoses->map(function ($item){
+
                         if($item->type == 'Confirmed') {
-                            return $item->i_c_d10_code->name;
+                            return $item->i_c_d10_code->code;
                         }
+                        return;
                     })}}</td>
             </tr>
         </table>
