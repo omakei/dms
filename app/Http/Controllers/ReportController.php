@@ -201,9 +201,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_one_year_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_one_year_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_one_year_f']+1:1;
+                                                                                ?$mtuha_data['opd_diagnoses'][$disease]['below_one_year_f']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
                 }
 
             }
@@ -225,9 +225,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_one_year_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_one_year_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_one_year_m']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['below_one_year_m']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
                 }
             }
 
@@ -248,9 +248,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_five_year_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_five_year_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_five_year_f']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['below_five_year_f']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
                 }
             }
 
@@ -271,9 +271,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_five_year_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_five_year_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_five_year_m']+1:1;
+                                                                                ?$mtuha_data['opd_diagnoses'][$disease]['below_five_year_m']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
                 }
             }
 
@@ -294,9 +294,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
                 }
 
             }
@@ -318,9 +318,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_m']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_m']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
                 }
             }
 
@@ -341,9 +341,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['below_sixty_year_f']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_f'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_f'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_f']+1:1;
                 }
             }
 
@@ -364,9 +364,9 @@ class ReportController extends Controller
                 foreach (Arr::flatten($this->getPatientDiseases($report, $item->patient_id)) as $disease){
 
                     $mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_m']+1:1;
+                                                                                    ?$mtuha_data['opd_diagnoses'][$disease]['above_sixty_year_m']+1:1;
                     $mtuha_data['opd_diagnoses'][$disease]['total_m'] = !empty($mtuha_data['opd_diagnoses'][$disease]['total_m'])
-                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
+                                                                        ?$mtuha_data['opd_diagnoses'][$disease]['total_m']+1:1;
                 }
             }
         });
