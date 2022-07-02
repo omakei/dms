@@ -71,8 +71,8 @@ class PatientVisitResource extends Resource
                     ->searchable(['attendant.first_name','attendant.middle_name','attendant.last_name']),
                 Tables\Columns\TextColumn::make('visit_type.name')->label('Visit Type'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->date()->sortable(true),
-            ])
+                    ->date()->sortable(),
+            ])->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\Filter::make('created_at')
                     ->form([
