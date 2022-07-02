@@ -57,6 +57,7 @@ class ICD10CodeResource extends Resource
             'index' => Pages\ListICD10Codes::route('/'),
             'create' => Pages\CreateICD10Code::route('/create'),
             'edit' => Pages\EditICD10Code::route('/{record}/edit'),
+            'view' => Pages\ViewICD10Code::route('/{record}'),
         ];
     }
 }

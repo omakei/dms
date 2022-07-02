@@ -66,6 +66,7 @@ class LaboratoryTestResource extends Resource
             'index' => Pages\ListLaboratoryTests::route('/'),
             'create' => Pages\CreateLaboratoryTest::route('/create'),
             'edit' => Pages\EditLaboratoryTest::route('/{record}/edit'),
+            'view' => Pages\ViewLaboratoryTest::route('/{record}'),
         ];
     }
 }

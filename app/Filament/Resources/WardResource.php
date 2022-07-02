@@ -64,6 +64,7 @@ class WardResource extends Resource
             'index' => Pages\ListWards::route('/'),
             'create' => Pages\CreateWard::route('/create'),
             'edit' => Pages\EditWard::route('/{record}/edit'),
+            'view' => Pages\ViewWard::route('/{record}'),
         ];
     }
 }

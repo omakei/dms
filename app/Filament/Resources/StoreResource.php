@@ -65,6 +65,7 @@ class StoreResource extends Resource
             'index' => Pages\ListStores::route('/'),
             'create' => Pages\CreateStore::route('/create'),
             'edit' => Pages\EditStore::route('/{record}/edit'),
+            'view' => Pages\ViewStore::route('/{record}'),
         ];
     }
 }

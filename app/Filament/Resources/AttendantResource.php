@@ -97,6 +97,7 @@ class AttendantResource extends Resource
             'index' => Pages\ListAttendants::route('/'),
             'create' => Pages\CreateAttendant::route('/create'),
             'edit' => Pages\EditAttendant::route('/{record}/edit'),
+            'view' => Pages\ViewAttendant::route('/{record}'),
         ];
     }
 }

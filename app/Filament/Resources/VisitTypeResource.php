@@ -61,6 +61,7 @@ class VisitTypeResource extends Resource
             'index' => Pages\ListVisitTypes::route('/'),
             'create' => Pages\CreateVisitType::route('/create'),
             'edit' => Pages\EditVisitType::route('/{record}/edit'),
+            'view' => Pages\ViewVisitType::route('/{record}'),
         ];
     }
 }

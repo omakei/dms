@@ -70,18 +70,14 @@ class PatientVisitResource extends Resource
                     ->label('Doctor name')
                     ->searchable(['attendant.first_name','attendant.middle_name','attendant.last_name']),
                 Tables\Columns\TextColumn::make('visit_type.name')->label('Visit Type'),
-                Tables\Columns\TextColumn::make('started_at')
-                    ->date(),
-                Tables\Columns\TextColumn::make('ended_at')
-                    ->date(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->date(),
+                    ->date()->sortable(true),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')
                     ->form([
                         Forms\Components\DatePicker::make('created_from')
-                            ->placeholder(fn ($state): string => 'Dec 18, ' . now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'July 6, ' . now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('created_until')
                             ->placeholder(fn ($state): string => now()->format('M d, Y')),
                     ])

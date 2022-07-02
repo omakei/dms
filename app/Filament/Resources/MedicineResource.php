@@ -70,6 +70,7 @@ class MedicineResource extends Resource
             'index' => Pages\ListMedicines::route('/'),
             'create' => Pages\CreateMedicine::route('/create'),
             'edit' => Pages\EditMedicine::route('/{record}/edit'),
+            'view' => Pages\ViewMedicine::route('/{record}'),
         ];
     }
 }
