@@ -53,6 +53,8 @@ class AttendantResource extends Resource
                     ->options([
                         'Doctor' => 'Doctor',
                         'Nurse' => 'Nurse',
+                        'Lab Technician' => 'Lab Technician',
+                        'Pharmacist' => 'Pharmacist',
                     ]),
                 Forms\Components\Select::make('user_id')
                     ->label('User')

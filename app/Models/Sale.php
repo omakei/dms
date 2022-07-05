@@ -21,7 +21,7 @@ class Sale extends Model
 
     public function visit(): BelongsTo
     {
-        return $this->belongsTo(PatientVisit::class, 'patient_visit_id');
+        return $this->belongsTo(PatientVisit::class, 'patient_prescription_id');
     }
 
     public function medicine(): BelongsTo

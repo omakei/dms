@@ -73,8 +73,8 @@ class InvestigationsRelationManager extends HasManyRelationManager
                     ->label('Results'),
                 Tables\Columns\BooleanColumn::make('result_is_published')
                     ->label('Publication Status'),
-                Tables\Columns\TextColumn::make('publisher.name')
-                    ->label('Publisher'),
+//                Tables\Columns\TextColumn::make('publisher.name')
+//                    ->label('Publisher'),
 
             ])
 

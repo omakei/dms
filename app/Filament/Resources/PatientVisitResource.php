@@ -13,6 +13,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class PatientVisitResource extends Resource
@@ -39,7 +40,7 @@ class PatientVisitResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('attendant_id')
                     ->label('Doctor')
-                    ->options(Attendant::all()->pluck('full_name', 'id'))
+                    ->options(Attendant::where('profile_category', 'Doctor')->get()->pluck('full_name', 'id'))
                     ->searchable(['first_name', 'middle_name','last_name'])
                     ->required(),
                 Forms\Components\Select::make('visit_type_id')
@@ -92,6 +93,7 @@ class PatientVisitResource extends Resource
                                 fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
                             );
                     }),
+                SelectFilter::make('Doctor')->relationship('attendant', 'first_name')
             ]);
     }
 
@@ -120,6 +122,12 @@ class PatientVisitResource extends Resource
             return [
                 RelationManagers\VitalSignsRelationManager::class,
                 RelationManagers\InvestigationsRelationManager::class,
+            ];
+        }
+
+        if(auth()->user()->hasRole('pharmacy')) {
+            return [
+                RelationManagers\PrescriptionsRelationManager::class,
             ];
         }
 

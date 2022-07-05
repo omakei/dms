@@ -67,6 +67,11 @@ class PrescriptionsRelationManager extends HasManyRelationManager
                         'italic',
                         'strike',
                     ]),
+
+                Forms\Components\Toggle::make('dispensed')
+                    ->label('Dispense Medicine')
+                    ->visible(fn (Component $livewire): bool =>(auth()->user()->hasRole('pharmacy')))
+                    ->inline(false)
             ]);
     }
 

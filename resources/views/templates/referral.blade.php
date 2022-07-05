@@ -92,7 +92,7 @@
                 <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;"> Investigation Name: </td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">{{ $investigation->laboratory_test->name }}</td>
                 <td style="border:1px solid #000; font-weight: bold; text-align: center;padding: 4px;">Investigation Result: </td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">{!! $investigation->result !!}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{!! $investigation->results !!}</td>
             </tr>
         @endforeach
         </tbody>
