@@ -107,6 +107,8 @@ class PatientResource extends Resource
                                 ->required()
                                 ->maxLength(255),
                             Forms\Components\DatePicker::make('dob')
+                                ->minDate(now()->subYears(150))
+                                ->maxDate(now())
                                 ->default(now())
                                 ->required(),
                             Forms\Components\TextInput::make('patient_number')

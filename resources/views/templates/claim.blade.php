@@ -69,39 +69,19 @@
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">Type of Surgery</td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">Cost</td>
             </tr>
+            @foreach($bill->bill_items as $item)
             <tr>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{($item->billable_type=="App\Models\VisitType" || $item->billable_type=="App\Models\LaboratoryTest")? $item->billable->name : ""}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{($item->billable_type=="App\Models\VisitType" || $item->billable_type=="App\Models\LaboratoryTest")? $item->billable->price : ""}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{($item->billable_type=="App\Models\Medicine")? $item->billable->name : ""}}</td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{($item->billable_type=="App\Models\Medicine")? $item->billable->price : ""}}</td>
+                <td style="border:1px solid #000; text-align: center;padding: 4px;">{{($item->billable_type=="App\Models\Medicine")? $item->billable->price : ""}}</td>
                 <td colspan="2" style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
             </tr>
-            <tr>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td colspan="2" style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-            </tr>
-            <tr>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td colspan="2" style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-                <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
-            </tr>
+            @endforeach
             <tr>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>
                 <td style="border:1px solid #000; text-align: center;padding: 4px;">&nbsp;</td>

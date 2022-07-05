@@ -63,6 +63,7 @@ class ReportController extends Controller
         $patient = Patient::find($bill->patient_id);
 
         if($patient->insurance_type == 'NHIF') {
+//            dd($bill->bill_items->toArray());
 
             $pdf = PDF::loadView('templates.claim',
                 ['data' => PatientVisit::find($bill->patient_visit_id), 'bill' => $bill, 'qrcode' => QrCode::size(400)->color(0,0,0)->generate('omakei')])
@@ -383,7 +384,9 @@ class ReportController extends Controller
     private function getPatientDiseases(Report $report, $patient_id)
     {
 //        ->whereBetween('created_at', [$report->from, $report->to])
-        $visits = PatientVisit::where(['patient_id' => $patient_id])->get();
+        $visits = PatientVisit::where(['patient_id' => $patient_id])
+                    ->whereBetween('created_at', [$report->from, $report->to])
+                    ->get();
         $data = [];
 //            return collect(['cholera']);
         return $visits->map(function ($item){

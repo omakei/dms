@@ -21,7 +21,7 @@ class Prescription extends LineChartWidget
             'datasets' => [
                 [
                     'label' => 'Prescription created',
-                    'data' => [0, 10, 5, 2, 21, 32, 45, 74, 65, 45, 77, 89],
+                    'data' => [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
                     'backgroundColor' => [
                         'rgba(75, 192, 192, 1)',
                     ],
