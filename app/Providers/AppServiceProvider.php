@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
         Filament::serving(function () {
-            Filament::registerTheme(mix('css/app.css'));
+            Filament::registerTheme(mix('css/filament.css'));
         });
 
 
